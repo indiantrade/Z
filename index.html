@@ -1,165 +1,265 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> GUJRATI TRADER - Learning Community</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Zero To Hero - Stock Market Learning & Trading Academy</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        telegram: '#229ED9',
+                        emeraldNeon: '#10b981',
+                        tealGlow: '#14b8a6',
+                        darkSlate: '#020617',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(16, 185, 129, 0.4), 0 0 30px rgba(20, 184, 166, 0.2)' },
+                            '50%': { boxShadow: '0 0 25px rgba(16, 185, 129, 0.7), 0 0 50px rgba(20, 184, 166, 0.4)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #020617;
+        }
+        
+        /* Custom Background Grid Pattern */
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
 
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+        /* Glassmorphism Styling */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-  .card {
-    width: 85%;
-    max-width: 340px; 
-    background: #010a0f;
-    border: 1.5px solid #00d2ff;
-    border-radius: 35px;
-    padding: 20px 15px;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
-  }
+        .glass-card-hover {
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
 
-  .profile-img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 3px solid #00d2ff;
-    object-fit: cover;
-    margin-top: -5px;
-    box-shadow: 0 0 15px #00d2ff;
-  }
-
-  h1 {
-    color: #fff;
-    font-size: 20px;
-    margin: 15px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .features {
-    text-align: left;
-    margin: 0 auto;
-    width: 90%;
-  }
-
-  .feature-item {
-    color: #ccc;
-    font-size: 13px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-  }
-
-  .feature-item:last-child { border-bottom: none; }
-
-  .icon { margin-right: 12px; font-size: 16px; }
-
-  .join-text {
-    color: #eee;
-    font-size: 12px;
-    margin: 20px 0 12px;
-    font-weight: 300;
-  }
-
-  .telegram-btn {
-    display: block;
-    background: linear-gradient(90deg, #00d2ff 0%, #9247ff 100%);
-    color: white;
-    text-decoration: none;
-    padding: 14px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3);
-  }
-
-  .hindi-quote {
-    color: #bbb;
-    font-size: 13px;
-    margin-bottom: 20px;
-    line-height: 1.4;
-  }
-
-  .footer-box {
-    border: 1px solid rgba(0, 210, 255, 0.2);
-    border-radius: 12px;
-    padding: 8px;
-    font-size: 11px;
-    color: #888;
-  }
-
-  /* Link styling for Agency */
-  .footer-box a { 
-    color: #00d2ff; 
-    font-weight: bold; 
-    text-decoration: none;
-  }
-
-  .disclaimer {
-    font-size: 9px;
-    color: #444;
-    margin-top: 12px;
-  }
-</style>
+        .glow-button {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0284c7 100%);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-darkSlate text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between relative selection:bg-emerald-500 selection:text-white pb-24 sm:pb-0 bg-grid-pattern">
 
-<div class="card">
-  <img src="https://i.ibb.co/GQYGXHF4/In-Shot-20260927-223648191.jpg" alt=" GUJRATI TRADER" class="profile-img">
+    <!-- Ambient Glowing Background Orbs -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="fixed bottom-10 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-  <h1> GUJRATI TRADER</h1>
+    <!-- Top Navigation Header -->
+    <header class="w-full bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80 py-3.5 px-4 fixed top-0 z-40">
+        <div class="max-w-3xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="relative">
+                    <img src="https://iili.io/nhpsxEv.jpg" alt="Zero To Hero Logo" class="w-10 h-10 rounded-xl border border-emerald-500/40 object-cover shadow-md shadow-emerald-950/50" onerror="this.src='https://placehold.co/100x100/0f172a/10b981?text=ZTH'">
+                    <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-slate-950"></span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-sm sm:text-base text-white tracking-tight uppercase leading-tight">ZERO TO HERO</span>
+                    <span class="text-[10px] font-semibold text-emerald-400 tracking-wider">TRADING ACADEMY</span>
+                </div>
+            </div>
+            <a href="https://t.me/+3MU4PikK6AEyZGNl" target="_blank" rel="noopener noreferrer" class="hidden sm:flex bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition duration-200 items-center space-x-2 shadow-lg shadow-emerald-900/30">
+                <i class="fa-brands fa-telegram text-base"></i>
+                <span>Join Channel</span>
+            </a>
+        </div>
+    </header>
 
-  <div class="features">
-    <div class="feature-item"><span class="icon"></span> Learning & Educational Sessions</div>
-    <div class="feature-item"><span class="icon"></span> Market Concepts & Awareness</div>
-    <div class="feature-item"><span class="icon"></span> Chart Reading Concepts</div>
-    <div class="feature-item"><span class="icon"></span> Educational Case Discussions</div>
-  </div>
+    <!-- Main Content Area -->
+    <main class="pt-24 pb-8 px-4 max-w-xl mx-auto text-center flex-grow flex flex-col justify-center items-center w-full relative z-10">
+        
+        <!-- Official Badge -->
+        <div class="inline-flex items-center space-x-2 bg-slate-900/90 border border-emerald-500/30 px-3.5 py-1.5 rounded-full mb-5 shadow-lg shadow-emerald-950/40">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-[11px] font-semibold text-emerald-300 tracking-wide">Official Stock Market Learning Hub</span>
+        </div>
 
-  <p class="join-text">Join our learning community and grow your knowledge</p>
+        <!-- Big Profile Avatar with Glow -->
+        <div class="relative mb-6 group animate-float">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 rounded-3xl blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
+            <img src="https://iili.io/nhpsxEv.jpg" alt="Zero To Hero Trading Academy" class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl border-2 border-slate-900 shadow-2xl object-cover" onerror="this.src='https://placehold.co/150x150/0f172a/10b981?text=ZTH'">
+            <span class="absolute -bottom-2 right-2 bg-slate-900 text-emerald-400 border border-emerald-500/50 text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-md flex items-center space-x-1">
+                <i class="fa-solid fa-circle text-[6px] text-emerald-400 animate-pulse"></i>
+                <span>LIVE</span>
+            </span>
+        </div>
 
-  <a href="https://t.me/+mc6hSYTJFoU0MmRl" class="telegram-btn">JOIN TELEGRAM</a>
+        <!-- Main Headline -->
+        <h1 class="text-2xl sm:text-3xl font-black text-white leading-tight mb-3 tracking-tight">
+            Master Price Action & <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">Stock Market Discipline</span>
+        </h1>
 
-  <p class="hindi-quote">     ,     </p>
+        <!-- Subheadline -->
+        <p class="text-gray-300 text-xs sm:text-sm mb-6 max-w-md leading-relaxed font-normal">
+            Transform your trading understanding with daily technical price action analysis, market structure breakdowns, and risk management concepts.
+        </p>
 
-  <div class="footer-box">
-    This Channel Advertise By <a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank">AD BUILD AGENCY</a>
-  </div>
+        <!-- Main Action CTA Button -->
+        <div class="w-full mb-6">
+            <a href="https://t.me/+3MU4PikK6AEyZGNl" target="_blank" rel="noopener noreferrer" class="glow-button animate-pulse-glow w-full text-white font-extrabold text-base py-4 px-6 rounded-2xl transition duration-200 flex items-center justify-center space-x-3 border border-emerald-300/30 active:scale-[0.98] shadow-xl">
+                <i class="fa-brands fa-telegram text-2xl"></i>
+                <span class="tracking-wide">JOIN TELEGRAM CHANNEL NOW</span>
+            </a>
+            <div class="flex items-center justify-center space-x-4 mt-2.5 text-[11px] text-gray-400 font-medium">
+                <span class="flex items-center"><i class="fa-solid fa-lock-open text-emerald-400 mr-1.5"></i> Free Learning</span>
+                <span>•</span>
+                <span class="flex items-center"><i class="fa-solid fa-chart-line text-emerald-400 mr-1.5"></i> Daily Analysis</span>
+            </div>
+        </div>
 
-  <div class="disclaimer">
-    Terms | Privacy | Disclaimer <br>
-    This site is not part of Facebook� or endorsed by Facebook�.
-  </div>
-</div>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2552096918611818');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2552096918611818&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+        <!-- Quick Numerical Trust Stats Grid -->
+        <div class="grid grid-cols-3 gap-2.5 w-full my-3">
+            <div class="glass-card p-3 rounded-xl text-center">
+                <div class="text-base sm:text-lg font-black text-emerald-400">100%</div>
+                <div class="text-[10px] text-gray-400 font-medium mt-0.5">Educational</div>
+            </div>
+            <div class="glass-card p-3 rounded-xl text-center">
+                <div class="text-base sm:text-lg font-black text-teal-400">Daily</div>
+                <div class="text-[10px] text-gray-400 font-medium mt-0.5">Nifty Charts</div>
+            </div>
+            <div class="glass-card p-3 rounded-xl text-center">
+                <div class="text-base sm:text-lg font-black text-cyan-400">Strict</div>
+                <div class="text-[10px] text-gray-400 font-medium mt-0.5">Risk Rules</div>
+            </div>
+        </div>
+
+        <!-- Educational Highlights Grid -->
+        <div class="grid grid-cols-1 gap-3 w-full text-left my-3">
+            
+            <!-- Card 1 -->
+            <div class="glass-card glass-card-hover p-4 rounded-2xl flex items-start space-x-3.5">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                    <i class="fa-solid fa-chart-candlestick"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-xs sm:text-sm mb-0.5">Technical Price Action</h3>
+                    <p class="text-[11px] text-gray-400 leading-normal">Learn to identify key demand-supply zones, trend reversals, and breakout patterns.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card glass-card-hover p-4 rounded-2xl flex items-start space-x-3.5">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-xs sm:text-sm mb-0.5">Nifty & BankNifty Insights</h3>
+                    <p class="text-[11px] text-gray-400 leading-normal">Pre-market and post-market structural analysis for index traders.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card glass-card-hover p-4 rounded-2xl flex items-start space-x-3.5">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-xs sm:text-sm mb-0.5">Risk Management & Mindset</h3>
+                    <p class="text-[11px] text-gray-400 leading-normal">Focus on position sizing, stop-loss strategy, and emotional control.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Promoted By AD BUILD AGENCY Section -->
+        <div class="mt-6 pt-4 border-t border-slate-800/80 w-full text-center">
+            <div class="inline-flex items-center justify-center space-x-2 bg-slate-900/90 border border-slate-800 px-4 py-2 rounded-xl">
+                <span class="text-xs text-gray-400 font-medium">Promoted By</span>
+                <a href="https://t.me/+3XoqJNLxYHswNTc1" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 font-black text-xs flex items-center space-x-1 transition group">
+                    <span>AD BUILD AGENCY</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition duration-200"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="fixed bottom-0 left-0 right-0 p-3 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-800/90 z-50 sm:hidden">
+        <a href="https://t.me/+3MU4PikK6AEyZGNl" target="_blank" rel="noopener noreferrer" class="glow-button w-full text-white font-extrabold text-sm py-3.5 px-4 rounded-xl flex items-center justify-center space-x-2.5 shadow-lg active:scale-[0.98] transition">
+            <i class="fa-brands fa-telegram text-xl"></i>
+            <span>JOIN FREE TELEGRAM CHANNEL</span>
+        </a>
+    </div>
+
+    <!-- Meta Compliance Footer & SEBI Warning -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-8 px-4 text-center text-xs text-gray-400 relative z-10">
+        <div class="max-w-2xl mx-auto space-y-4">
+            
+            <!-- SEBI Compliance & Risk Box -->
+            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-left space-y-2">
+                <div class="flex items-center space-x-2 text-amber-400 font-bold text-[11px]">
+                    <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                    <span>SEBI & FINANCIAL RISK WARNING DISCLAIMER:</span>
+                </div>
+                <p class="text-gray-400 text-[10px] leading-relaxed">
+                    Trading and investments in the stock market are subject to market risk. Past performance is not indicative of future results. Content published on this channel is purely for educational, analytical, and informational purposes. We do not offer SEBI-registered stock tips, guaranteed return schemes, advisory services, or buy/sell calls. Always consult a certified financial advisor before making any investment decisions.
+                </p>
+            </div>
+
+            <!-- Essential Meta Policy Footer Links -->
+            <div class="flex justify-center items-center space-x-4 text-gray-400 text-[11px] font-medium pt-1">
+                <a href="#" class="hover:text-emerald-400 transition">Privacy Policy</a>
+                <span>•</span>
+                <a href="#" class="hover:text-emerald-400 transition">Terms of Use</a>
+                <span>•</span>
+                <a href="#" class="hover:text-emerald-400 transition">Contact Us</a>
+            </div>
+
+            <!-- Non-Endorsement Meta Notice -->
+            <div class="space-y-1 text-gray-400 text-[10px]">
+                <p class="font-semibold text-gray-300">© 2026 ZERO TO HERO TRADING ACADEMY. All Rights Reserved.</p>
+                <p class="text-gray-400">
+                    This website is not affiliated with, sponsored by, or endorsed by Meta Platforms, Inc. or Facebook. Facebook™ is a registered trademark of Meta Platforms, Inc.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
 </html>
+```
